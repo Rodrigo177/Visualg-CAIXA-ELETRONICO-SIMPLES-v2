@@ -1,0 +1,105 @@
+Algoritmo "Caixa Eletronico Simples"
+
+Var
+
+    nome: caractere
+    Cxaeltc: vetor[0..2] de real
+    // Cxaeltc[0] <-  VALOR DEPOSITO //
+    // Cxaeltc[1] <-  VALOR SAQUE //
+    // Cxaeltc[2] <-  VALOR CONTA (VALOR FINAL) //
+    oprc: inteiro
+
+    // DEPOSITO //
+    procedimento deposito()
+    inicio
+    escreval ("[CAIXA ELETRONICO] D E P O S I T O")
+    escreval ("[CAIXA ELETRONICO] VALOR?")
+    leia (Cxaeltc[0])
+    se Cxaeltc[0] <= 0 entao
+    limpatela
+    escreval()
+    escreval ("[CAIXA ELETRONICO] Valor Invalido!")
+    senao
+    Cxaeltc[2] <- Cxaeltc[2] + Cxaeltc[0]
+    escreval()
+    escreval ("[CAIXA ELETRONICO] VALOR EM CONTA R$",Cxaeltc[2])
+    fimse
+    menu()
+    fimprocedimento
+
+    // SAQUE //
+    procedimento saque()
+    inicio
+    escreval ("[CAIXA ELETRONICO] S A Q U E")
+    escreval ("[CAIXA ELETRONICO] Valor em Conta R$",Cxaeltc[2])
+    escreval ("[CAIXA ELETRONICO] Quanto você deseja Sacar?")
+    leia (Cxaeltc[1])
+    se Cxaeltc[2] <= 0 entao
+    limpatela
+    escreval ("[CAIXA ELETRONICO] Valor Invalido!")
+    fimse
+    se Cxaeltc[2] < Cxaeltc[1] entao
+    escreval()
+    escreval ("[CAIXA ELETRONICO] Você não tem esse valor na conta!")
+    senao
+    escreval()
+    escreval ("[CAIXA ELETRONICO] Valor Retirado R$", Cxaeltc[1])
+    escreval ("[CAIXA ELETRONICO] Valor Atualizado R$", Cxaeltc[2] - Cxaeltc[1])
+    Cxaeltc[2] <- Cxaeltc[2] - Cxaeltc[1]
+    fimse
+    menu()
+    fimprocedimento
+    
+    // EXTRATO //
+    procedimento extrato()
+    inicio
+    escreval ("[CAIXA ELETRONICO] E X T R A T O")
+    escreval ("[CAIXA ELETRONICO] A G U A R D E")
+    se Cxaeltc[2] <= 0 entao
+    escreval()
+    escreval ("[CAIXA ELETRONICO] Valor ZERADO!(Sem Fundos Na Conta)")
+    senao
+    escreval()
+    escreval ("[CAIXA ELETRONICO] VALOR EM CONTA R$",Cxaeltc[2])
+    fimse
+    menu()
+    fimprocedimento
+    
+    // MENU //
+    procedimento menu()
+    inicio
+    escreval ()
+    escreval ("      [CAIXA ELETRONICO] (",nome,")!")
+    escreval ("      Selecione a Operação Desejada     ")
+    escreval ("             1 - Deposito           ")
+    escreval ("             2 - Saque              ")
+    escreval ("             3 - Extrato            ")
+    escreval ("             4 - Sair               ")
+    leia (oprc)
+    escolha oprc
+      Caso 1
+           deposito()
+      Caso 2
+           saque()
+      Caso 3
+           extrato()
+      Caso 4
+       escreval ("[CAIXA ELETRONICO]PROCESSO FINALIZADO!")
+       Fimalgoritmo
+       
+       // * //
+       outrocaso
+       escreval ("[CAIXA ELETRONICO]OPÇÃO DESCONHECIDA!")
+       fimescolha
+       fimprocedimento
+       
+       // * //
+inicio
+
+       Cxaeltc[2] <- 0
+       MUDACOR("Verde","FRENTE")
+       escreval ("[CAIXA ELETRONICO] Digite Seu Nome Completo!")
+       leia (nome)
+       menu()
+       
+Fimalgoritmo
